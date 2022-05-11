@@ -2,17 +2,18 @@ const express = require('express');
 const mongoose = require('mongoose');
 const Router  = require('./routes/routes');
 
+// User controller
+const cont = require('./controllers/user');
+
+// Env variables
+const env = require('../../.env');
+
 const app = express();
 
 app.use(express.json());
 
-const username = "Amai";
-const password = "CkIjnxgUhKB9WL7q";
-const cluster = "cluster0.n61wz";
-const dbname = "myFirstDatabase";
-
 mongoose.connect(
-    `mongodb+srv://${username}:${password}@${cluster}.mongodb.net/${dbname}?retryWrites=true&w=majority`/*,
+    `mongodb+srv://${env.username}:${env.password}@${env.cluster}.mongodb.net/${env.dbname}?retryWrites=true&w=majority`/*,
     {
         useNewUrlParser: true,
         useFindAndModify: false,
@@ -29,6 +30,7 @@ db.once("open", function () {
 app.use(Router);
 
 app.listen(3000, () => {
-    console.log("Server is running a port 3000");
-});
+    console.log("Server is running at port 3000");
+    cont.change_pass("test1@hotmail.com", "test_nuevo2", "test_nuevo23");
 
+});
