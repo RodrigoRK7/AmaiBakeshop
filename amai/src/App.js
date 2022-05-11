@@ -1,5 +1,6 @@
 //import logo from './logo.svg';
-import './App.css';
+//import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Profile from './components/Profile/Profile';
@@ -21,9 +22,9 @@ function App() {
             Learn React
           </a>
         */}
-        {/*<Login />*/}
+        <Login />
         {/*<Signup />*/}
-        <Profile />
+        {/*<Profile />*/}
       </header>
     </div>
   );
