@@ -6,7 +6,7 @@ const Router  = require('./routes/routes');
 const cont = require('./controllers/user');
 
 // Env variables
-const env = require('../../.env');
+const env = require('./.env');
 
 const app = express();
 
