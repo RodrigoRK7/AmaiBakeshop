@@ -15,42 +15,66 @@ import Login from './components/Login/Login';
 import Signup from './components/Signup/Signup';
 import Profile from './components/Profile/Profile';
 import { NavLink } from "react-bootstrap";
+import { Component } from "react";
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <Navbar bg="dark" variant="dark">
-          <Container>
-          <Navbar.Brand href="/login">Amai Bakeshop</Navbar.Brand>
-            <Nav className="me-auto">
-            <NavLink href="/login">
-              Login
-            </NavLink>
-            <NavLink href="/signup">
-              Signup
-            </NavLink>
-            <NavLink href="/profile">
-              Profile
-            </NavLink>
-            </Nav>
-          </Container>
-        </Navbar>
+class App extends Component {
+  state = {
+    data: null,
+  }
 
-        <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/signup">
-            <Signup />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  );
+  componentDidMount() {
+    this.callBackendAPI()
+      .then(res => this.setState({ data: res.express }))
+      .catch(err => console.log(err));
+  }
+    // fetching the GET route from the Express server which matches the GET route from server.js
+  callBackendAPI = async () => {
+    const response = await fetch('/express_backend');
+    const body = await response.json();
+
+    if (response.status !== 200) {
+      throw Error(body.message) 
+    }
+    return body;
+  };
+
+  render() {
+    return (
+      <Router>
+        <div>
+          <Navbar bg="dark" variant="dark">
+            <Container>
+              <Navbar.Brand href="/login">Amai Bakeshop</Navbar.Brand>
+              <Nav className="me-auto">
+                <NavLink href="/login">
+                  Login
+                </NavLink>
+                <NavLink href="/signup">
+                  Signup
+                </NavLink>
+                <NavLink href="/profile">
+                  Profile
+                </NavLink>
+              </Nav>
+            </Container>
+          </Navbar>
+
+          <Switch>
+            <Route path="/login">
+              <Login />
+            </Route>
+            <Route path="/signup">
+              <Signup />
+            </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
+          </Switch>
+          <p>{this.state.data}</p>
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;

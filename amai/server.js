@@ -13,12 +13,7 @@ const app = express();
 app.use(express.json());
 
 mongoose.connect(
-    `mongodb+srv://${env.username}:${env.password}@${env.cluster}.mongodb.net/${env.dbname}?retryWrites=true&w=majority`/*,
-    {
-        useNewUrlParser: true,
-        useFindAndModify: false,
-        useUnifiedTopology: true
-    }*/
+    `mongodb+srv://${env.username}:${env.password}@${env.cluster}.mongodb.net/${env.dbname}?retryWrites=true&w=majority`
 )
 
 const db = mongoose.connection;
@@ -29,8 +24,13 @@ db.once("open", function () {
 
 app.use(Router);
 
-app.listen(3000, () => {
-    console.log("Server is running at port 3000");
-    cont.change_pass("test1@hotmail.com", "test_nuevo2", "test_nuevo23");
+app.listen(env.port, () => {console.log(`Server is running at port ${env.port}`)});
 
+app.get('/express_backend', (req, res) => {
+    res.send({ express: 'BACKEND CONNECTED'}); 
+});
+
+app.get('/login', (req, res) => {
+    const auth = cont.login(req.email, req.pass);
+    res.send({ auth: auth });
 });
