@@ -1,18 +1,19 @@
 import React from 'react'
+// import { Catalog, Formato } from './components';
 
 // import Products from './components/Products/Products';
 // import Navbar from './components/Navbar/Navbar';
 
 // import {Products, Navbar, Login} from './components';
-import Login from './components/Login/Login';
-
+import Formato from './components/Catalog/Formato';
 // Se instalo la extension: dsznajder.es7-react-js-snippets
 const app = () => {
   return (
     <div>
         {/* <Navbar />
         <Products /> */}
-        <Login/>
+        {/* <Login/> */}
+        <Formato/>
     </div>
   )
 }
