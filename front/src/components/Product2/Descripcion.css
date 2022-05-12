@@ -1,4 +1,11 @@
 .Descripcion {
-    background: rgb(238, 69, 64);
+    background: rgb(239, 183, 181);
     height: 100vh
+}
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #8064A2 !important;
+}
+
+.Card {
+    text-shadow: 2px 2px;
 }
