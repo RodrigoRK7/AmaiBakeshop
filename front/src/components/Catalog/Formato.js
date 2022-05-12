@@ -5,10 +5,10 @@ import pastel1 from '../../assets/pastel1.jfif';
 import pastel2 from '../../assets/pastel2.jfif';
 import pastel3 from '../../assets/pastel3.jfif';
 import pastel4 from '../../assets/pastel4.jfif';
-import pastel5 from '../../assets/pastel5.jfif';
-import pastel6 from '../../assets/pastel6.jfif';
-import pastel7 from '../../assets/pastel7.jfif';
-import pastel8 from '../../assets/pastel8.jfif';
+// import pastel5 from '../../assets/pastel5.jfif';
+// import pastel6 from '../../assets/pastel6.jfif';
+// import pastel7 from '../../assets/pastel7.jfif';
+// import pastel8 from '../../assets/pastel8.jfif';
 import './Formato.css'
 
 function Formato() {
